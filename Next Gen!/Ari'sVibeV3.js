@@ -205,6 +205,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.querySelectorAll('.folder').forEach(folder => {
+  folder.addEventListener('click', (e) => {
+    // Prevent bubbling to parent folders
+    e.stopPropagation();
+    folder.classList.toggle('open');
+  });
+});
+
+
 function spawnFlyingSpark(svg, startX, startY) {
   const flying = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
   flying.setAttribute("class", "spark");

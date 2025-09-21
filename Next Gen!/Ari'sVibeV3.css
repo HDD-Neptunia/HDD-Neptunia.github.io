@@ -59,16 +59,15 @@
             }
             }
 
-            
 
-            /*.file-tree {
+            .file-tree {
             position: fixed;
             top: 28vh;
             right: 18vw;
             display: flex;
             flex-direction: column;
             animation: pulseGlow 3s ease-in-out infinite;
-            align-items: flex-end;  /* 🔥 Anchor contents to right 
+            align-items: flex-end;  /* 🔥 Anchor contents to right */
             clip-path: polygon(
                 0 0,
                 100% 0,
@@ -107,7 +106,7 @@
 
             .file-tree > ul {
             display: flex;
-            flex-direction: row-reverse; /* put root folder on the right 
+            flex-direction: row-reverse; /* put root folder on the right */
             justify-content: flex-end;
             align-items: flex-end;
             gap: 1rem;
@@ -129,11 +128,6 @@
 
             overflow: hidden;
             white-space: nowrap;
-
-
-
-            /* ❌ remove transform: scaleX(0) */
-            /* just let the li > ul rules handle visibility */
             }
 
 
@@ -141,7 +135,7 @@
         
 
 
-        /*    .file-tree::after {
+            .file-tree::after {
             content: '';
             position: absolute;
             right: 0px;
@@ -155,7 +149,7 @@
             }  */
 
 
-            /* lists collapsed by default 
+            /* lists collapsed by default */
 
             .file-tree li {
             display: flex;
@@ -184,7 +178,7 @@
             top: 0;              /* align to parent row */
             right: 100%;         /* place directly to the LEFT of parent */
             transform: scaleX(0); 
-            transform-origin: right;  /* expand leftward 
+            transform-origin: right;  /* expand leftward*/
             background: rgba(40, 40, 40, 0.95);
             border: 1px dashed #ff00dd;
             border-radius: 0.5rem;
@@ -204,7 +198,7 @@
 
 
 
-                /* interactions 
+                /* interactions */
             .file-tree .folder:hover {
             color: #ca0f8c;
             font-weight: bold;
@@ -213,7 +207,7 @@
             color: hotpink;
             font-weight: bold;
             transform: scale(1.05);
-            }*/
+            }
 
 
 
