@@ -115,16 +115,19 @@ function prev(key) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".file-tree .folder").forEach(folder => {
-    folder.addEventListener("click", (e) => {
-      // prevent clicks bubbling to parent folders
+  document.querySelectorAll(".file-tree li.folder .row").forEach(row => {
+    row.addEventListener("click", e => {
       e.stopPropagation();
-
-      const sub =
-       folder.querySelector("ul");
-      if (sub) {t
-        sub.classList.toggle("hidden");
+      const folder = row.closest("li.folder");
+      const sub = folder.querySelector(":scope > ul");
+      if (sub) {
+        sub.classList.toggle("open");
+        console.log("Toggled:", folder, "=>", sub.classList.contains("open"));
       }
     });
   });
 });
+
+
+
+
