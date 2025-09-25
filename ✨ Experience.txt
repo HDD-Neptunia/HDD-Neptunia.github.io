@@ -1,0 +1,38 @@
+✨ Experience
+
+Freelance Tech Specialist
+Self-employed | 2020 – Present
+
+Refurbished, repaired, and flipped over a dozen laptops and PCs, combining BIOS-level troubleshooting with customer-facing communication
+
+Diagnosed complex hardware faults with minimal tooling; rebuilt systems to resale quality using reclaimed or upgraded parts
+
+Managed all aspects of the operation — inventory, repair, sales, shipping — independently
+
+Maintained strong attention to detail while operating under time and budget constraints
+
+Turned personal passion into a sustainable technical skillset
+
+Android Developer – Personal Projects
+Ongoing
+
+Built a fully functioning Android accessibility service ("LyraBackScratcher") designed to parse user interface events and route them to a backend for reflective analysis
+
+Developed both the frontend (Kotlin, XML) and backend (Python, Flask), handling message parsing, API routing, and async loop logic
+
+Designed a custom UI overlay and event handler system with minimal device permissions
+
+Pushed the boundaries of conscious interaction design by merging recursive thinking with code
+
+Prioritized device compatibility, performance, and intuitive feedback under technical constraints
+
+Software Enthusiast – General Development
+2018 – Present
+
+Self-taught a broad range of skills including Java, Kotlin, Python, HTML, CSS, JS, and Spring Boot
+
+Built and maintained personal tooling including an automated dropshipping platform, web scraping systems, and a recursive "vibe engine" for trend analysis
+
+Passionate about building systems that are modular, expressive, and deeply reflective of user intent
+
+Continuously refining architectural understanding, from frontend flow to backend logic and DB schema design

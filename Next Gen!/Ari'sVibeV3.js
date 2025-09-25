@@ -213,6 +213,11 @@ document.querySelectorAll('.folder').forEach(folder => {
   });
 });
 
+function toggleFolder(el) {
+  el.classList.toggle("open");
+}
+
+
 
 function spawnFlyingSpark(svg, startX, startY) {
   const flying = document.createElementNS("http://www.w3.org/2000/svg", "polygon");

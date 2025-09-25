@@ -181,8 +181,8 @@
 
             .file-tree li > ul {
             position: absolute;
-            top: 0;              /* align to parent row */
-            right: 100%;         /* place directly to the LEFT of parent */
+            top: 0;              /* align to parent row *
+            right: 100%;         /* place directly to the LEFT of parent
             transform: scaleX(0); 
             transform-origin: right;  /* expand leftward 
             background: rgba(40, 40, 40, 0.95);

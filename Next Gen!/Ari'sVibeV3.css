@@ -59,12 +59,23 @@
             }
             }
 
+        .file-tree-wrapper::before {
+            left: 12rem;
+        }
 
-            .file-tree {
+        .file-tree ul.gen-stack {
+            display: flex;
+            flex-direction: row-reverse; /* 👈 expands to the left */
+            gap: 2rem;
+            padding-left: 0;
+        }
+
+        .file-tree {
             position: fixed;
             top: 28vh;
             right: 18vw;
             display: flex;
+            overflow: visible;
             flex-direction: column;
             animation: pulseGlow 3s ease-in-out infinite;
             align-items: flex-end;  /* 🔥 Anchor contents to right */
@@ -75,14 +86,14 @@
                 calc(100% - 30px) 100%,
                 0 100%
             );
-            }
+        }
 
-            @keyframes pulseGlow {
-                0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 221, 0.5); }
-                50% { box-shadow: 0 0 30px rgba(255, 0, 221, 0.8); }
-            }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 221, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(255, 0, 221, 0.8); }
+        }
 
-            .folder-joint {
+        .folder-joint {
             position: absolute;
             bottom: -10px;
             right: -12px;
@@ -94,48 +105,80 @@
             clip-path: polygon(0 0, 100% 0, 0 100%);
             transform: rotate(45deg);
             z-index: 2;
-            }
+        }
 
-            .file-tree ul {
+        .file-tree ul {
             align-items: center;
             gap: 1rem;
             list-style: none;
             margin: 0;
             padding: 0;
-            }
+        }
 
-            .file-tree > ul {
+        .file-tree > ul {
             display: flex;
-            flex-direction: row-reverse; /* put root folder on the right */
+            flex-direction: column; /* put root folder on the right */
             justify-content: flex-end;
             align-items: flex-end;
             gap: 1rem;
             list-style: none;
             margin: 0;
             padding: 0;
-            }
+        }
 
-  
 
-           .file-tree ul ul {
+        .folder > ul {
+            transform: scaleX(0);
+            transform-origin: right;
+            opacity: 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+        }
+
+        .folder.open > ul {
+            transform: scaleX(1);
+            opacity: 1;
+        }
+
+        .gen-stack > li {
+            opacity: 0;
+            transform: translateX(1rem);
+            transition: all 0.4s ease;
+        }
+        .folder.open > .gen-stack > li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+
+        .gen-list {
             display: flex;
             flex-direction: row;
-            justify-content: flex-end;
-            gap: 1rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
+            gap: 0.4rem;
+            padding-left: 0.6rem;
+        }
 
-            overflow: hidden;
-            white-space: nowrap;
-            }
+        .file-list {
+            position: absolute;
+            top: 0;
+            right: 100%;
+            transform: scaleX(0);
+            transform-origin: right;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            background: rgba(40, 40, 40, 0.95);
+            border: 1px dashed #ff00dd;
+            border-radius: 0.5rem;
+            padding: 0.6rem 1rem;
+            z-index: 5;
+        }
 
+        .folder.open > .file-list {
+            transform: scaleX(1);
+            opacity: 1;
+        }
 
-
-        
-
-
-            .file-tree::after {
+        .file-tree::after {
             content: '';
             position: absolute;
             right: 0px;
@@ -146,68 +189,87 @@
             clip-path: polygon(100% 0, 0 100%, 100% 100%);
             border-right: 1px dashed #ff00dd;
             border-bottom: 1px dashed #ff00dd;
-            }  */
+        }
 
 
-            /* lists collapsed by default */
+        /* lists collapsed by default */
 
-            .file-tree li {
+        .file-tree li {
             display: flex;
+            flex-direction: row-reverse;
             align-items: center;
             gap: 0.4rem;
             position: relative;
-            }
+        }
 
 
-            .file-tree li:last-child {
-                margin-bottom: 0;
-            }
+        .file-tree li:last-child {
+            margin-bottom: 0;
+        }
 
-            .file-tree li .row {
+        .file-tree li .row {
             display: inline-flex;
             align-items: center;
             gap: .4rem;
-            }
-            .file-tree li .label { order: 1; }
-            .file-tree li .icon  { order: 2; }
+        }
 
+        .file-tree li .icon  { order: 2; }
 
-
-            .file-tree li > ul {
+        .file-tree li .label { order: 1; }
+        
+        .file-tree li > ul {
             position: absolute;
-            top: 0;              /* align to parent row */
-            right: 100%;         /* place directly to the LEFT of parent */
+            top: 0;
+            right: 100%; /* ✨ flip to right side */
+            left: unset;
             transform: scaleX(0); 
-            transform-origin: right;  /* expand leftward*/
-            background: rgba(40, 40, 40, 0.95);
-            border: 1px dashed #ff00dd;
-            border-radius: 0.5rem;
+            transform-origin: right;  /* ✨ flip opening direction */
+
             padding: 0.6rem 1rem;
+            align-items: flex-end;
             z-index: 5;
             opacity: 0;
             transition: transform 0.3s ease, opacity 0.3s ease;
-            }
+        }
 
-            .file-tree li > ul.open {
+        .file-tree li > ul {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-right: 1.2rem; /* Controls spacing between generations */
+            padding-right: 0.6rem;
+            border-right: 1px dashed #ff00dd;
+            gap: 0.4rem;
+            background: rgba(40, 40, 40, 0.95);
+            border: 1px dashed #ff00dd;
+            border-radius: 0.5rem;
+        }
+
+        .file-tree ul ul {
+            align-items: flex-end;
+        }
+
+
+        .file-tree li > ul.open {
             transform: scaleX(1);
             opacity: 1;
-            }
-
-
-
-
-
-
-                /* interactions */
-            .file-tree .folder:hover {
+        }
+            /* interactions */
+        .file-tree .folder:hover {
             color: #ca0f8c;
             font-weight: bold;
-            }
-            .file-tree .model-file:hover {
+        }
+        .file-tree .model-file:hover {
             color: hotpink;
             font-weight: bold;
             transform: scale(1.05);
-            }
+        }
+
+        /* Reveal on open */
+        .folder.open > .file-list {
+            transform: scaleX(1);
+            opacity: 1;
+        }
 
 
 
