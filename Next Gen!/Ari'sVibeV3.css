@@ -322,6 +322,49 @@
             filter: drop-shadow(0 0 20px #ff00dd);
         }
 
+        .caution-tape {
+            position: fixed;            /* stays put, no matter where you scroll */
+            top: -500px;                 /* push it further UP */
+            right: 500px;              /* nudge it more RIGHT */
+            transform: rotate(-10deg);  /* rotate counterclockwise */
+            z-index: 9999;              /* slap it above everything */
+            width: 200px;               /* optional - make it fit how you like */
+            pointer-events: none;       /* so it doesn't block clicks */
+            transform: rotate(60deg); 
+
+        }
+
+        .wip-banner {
+            position: absolute;
+            top: 600px; /* adjust to taste */
+            left: 700px;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            color: #f0f0f0;
+            text-shadow: 0 0 10px #ff00ff;
+            pointer-events: none;
+            user-select: none;
+            transform: rotate(60deg);
+        }
+
+        .blinker {
+            animation: blink 1s infinite;
+            }
+
+            @keyframes blink {
+            0%   { opacity: 1; }
+            49%  { opacity: 1; }
+            50%  { opacity: 0; }
+            99%  { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+
+        .caution-tape img {
+            width: 400;
+            height: 60;
+        }
+
 
         .header, .div-header2 {
             text-align: center;
@@ -418,7 +461,7 @@
             }
 
         .portion-content.open {
-            max-height: 5000px; /* Adjust as needed */
+            max-height: 7000px; /* Adjust as needed */
             }
         
         .station-showcase {
