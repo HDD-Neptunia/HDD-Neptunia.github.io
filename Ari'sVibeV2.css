@@ -1,0 +1,555 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+
+    
+    body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            background-color: #222;
+            color: #e41777;
+            line-height: 1.6;
+            cursor: none;
+        }
+
+        main {
+            flex: 1; /* fills all space between header and footer */
+        }
+
+        .cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ff00dd;
+            box-shadow: 0 0 10px #ff00dd, 0 0 30px #ff00dd, 0 0 50px #ff00dd;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: background 0.2s ease, box-shadow 0.2s ease;
+            z-index: 9999;
+            }
+
+            a:hover ~ .cursor-glow,
+            button:hover ~ .cursor-glow,
+            .section-title:hover ~ .cursor-glow {
+                cursor: none;
+            background: #00ffcc;
+            transform: translate(-50%, -50%) scale(1.5);
+            box-shadow: 0 0 10px #00ffcc, 0 0 30px #00ffcc, 0 0 50px #00ffcc;
+        }
+
+        .click-shockwave {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 0, 221, 0.6);
+            box-shadow: 0 0 20px #ff00dd, 0 0 40px #ff00dd, 0 0 60px #ff00dd;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(1);
+            animation: shockwave 0.6s ease-out forwards;
+            z-index: 9998;
+            }
+
+            @keyframes shockwave {
+            to {
+                transform: translate(-50%, -50%) scale(4);
+                opacity: 0;
+            }
+            }
+
+            
+
+            /*.file-tree {
+            position: fixed;
+            top: 28vh;
+            right: 18vw;
+            display: flex;
+            flex-direction: column;
+            animation: pulseGlow 3s ease-in-out infinite;
+            align-items: flex-end;  /* 🔥 Anchor contents to right 
+            clip-path: polygon(
+                0 0,
+                100% 0,
+                100% calc(100% - 30px),
+                calc(100% - 30px) 100%,
+                0 100%
+            );
+            }
+
+            @keyframes pulseGlow {
+                0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 221, 0.5); }
+                50% { box-shadow: 0 0 30px rgba(255, 0, 221, 0.8); }
+            }
+
+            .folder-joint {
+            position: absolute;
+            bottom: -10px;
+            right: -12px;
+            width: 20px;
+            height: 20px;
+            background: rgba(30, 30, 30, 0.8);
+            border-right: 1px dashed #ff00dd;
+            border-bottom: 1px dashed #ff00dd;
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+            transform: rotate(45deg);
+            z-index: 2;
+            }
+
+            .file-tree ul {
+            align-items: center;
+            gap: 1rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            }
+
+            .file-tree > ul {
+            display: flex;
+            flex-direction: row-reverse; /* put root folder on the right 
+            justify-content: flex-end;
+            align-items: flex-end;
+            gap: 1rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            }
+
+  
+
+           .file-tree ul ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            gap: 1rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            overflow: hidden;
+            white-space: nowrap;
+
+
+
+            /* ❌ remove transform: scaleX(0) */
+            /* just let the li > ul rules handle visibility */
+            }
+
+
+
+        
+
+
+        /*    .file-tree::after {
+            content: '';
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            width: 30px;
+            height: 30px;
+            background: #2c2c2c;
+            clip-path: polygon(100% 0, 0 100%, 100% 100%);
+            border-right: 1px dashed #ff00dd;
+            border-bottom: 1px dashed #ff00dd;
+            }  */
+
+
+            /* lists collapsed by default 
+
+            .file-tree li {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            position: relative;
+            }
+
+
+            .file-tree li:last-child {
+                margin-bottom: 0;
+            }
+
+            .file-tree li .row {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            }
+            .file-tree li .label { order: 1; }
+            .file-tree li .icon  { order: 2; }
+
+
+
+            .file-tree li > ul {
+            position: absolute;
+            top: 0;              /* align to parent row */
+            right: 100%;         /* place directly to the LEFT of parent */
+            transform: scaleX(0); 
+            transform-origin: right;  /* expand leftward 
+            background: rgba(40, 40, 40, 0.95);
+            border: 1px dashed #ff00dd;
+            border-radius: 0.5rem;
+            padding: 0.6rem 1rem;
+            z-index: 5;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+
+            .file-tree li > ul.open {
+            transform: scaleX(1);
+            opacity: 1;
+            }
+
+
+
+
+
+
+                /* interactions 
+            .file-tree .folder:hover {
+            color: #ca0f8c;
+            font-weight: bold;
+            }
+            .file-tree .model-file:hover {
+            color: hotpink;
+            font-weight: bold;
+            transform: scale(1.05);
+            }*/
+
+
+
+        .trace-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 180vh;
+            pointer-events: none;
+            z-index: 1000;
+            overflow: visible;
+        }
+
+        .trace-overlay svg {
+            width: 100%;
+            height: 100%;
+        }
+        .circuit-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translateX(35vw);
+            padding-right: 4rem;
+            z-index: -1;       /* keeps it behind content */
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            pointer-events: none; /* so it doesn’t block clicks */
+        }
+
+        .github-link {
+            margin-top: 4rem;
+            padding-top:3rem;
+            padding-left: 8rem;
+            text-align: left;
+            margin-bottom: 4rem;
+        }
+
+        .github-link img {
+            width: 150px;
+            height: 150px;
+            filter: drop-shadow(0 0 10px #ff00dd);
+            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: pointer;
+        }
+
+        .github-link img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 20px #ff00dd);
+        }
+
+
+        .header, .div-header2 {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+
+        .div-header2, .body-tag {
+            text-align: left;
+            margin: 0;
+            max-width: 600px;
+            padding-left: 2rem;
+        }
+
+        .div-header2 {
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px #ff66cc;
+            color: #ff00dd;
+        }
+
+        .body-tag {
+            font-size: 1rem;
+            color: #e41777;
+            max-width: 600px;
+            margin: 0;
+            padding-left: 2rem;
+            text-align: left;
+            }
+        
+        .tagline {
+            font-size: 1rem;
+            margin-top: 4rem;
+            margin-left: 20rem;
+            color: #e41777;
+            text-align: left;
+        }
+    
+        .section {
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: left;
+            padding-left: 4rem;
+            top: -3rem;
+            }
+        
+        .section-title {
+            font-size: 2rem;
+            color: #ff00dd;
+            text-shadow: 2px 2px 5px #ff66cc;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .section-title:hover {
+            color: #ff66cc;
+            text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff66cc;
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            text-align: left;
+            margin-top: 1rem;
+        }
+    
+        .section-content.open {
+            max-height: 2000px; /* Adjust as needed
+             */
+        }
+
+        .portion-title {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: #e41777;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .portion-title.hover {
+            color: #ff00cc;
+            text-shadow: 0 0 10pcx #ff00cc, 0 0 20px #ff00cc;
+        }
+
+        .portion-content {
+            max-height: 0;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #e41777;
+            text-align: center;
+            }
+
+        .portion-content.open {
+            max-height: 5000px; /* Adjust as needed */
+            }
+        
+        .station-showcase {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 4rem 0 0 3rem; /* top margin, then left margin */
+            width: fit-content;
+        }
+
+
+        .my-image {
+            width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 0 30px #ff00dd;
+            margin-bottom: 1rem;
+        }
+
+        .bottom-text {
+            font-size: 0.8rem;
+            color: #ff66dd;
+            text-align: center;
+            max-width: 700px;
+        }
+
+
+        .footer-content{
+            margin: 0;
+            font-family: 'Courier New', cursive;
+            color: #e41777;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .glow{
+            color: #fff;
+            text-shadow:
+                0 0 5px #ff00cc,
+                0 0 10px #ff00cc,
+                0 0 20px #ff00cc,   
+            }
+
+        .intro-text {
+            color: #ffffff;
+        }
+
+
+        .spiral-bg {
+            position: fixed;
+            top: -20vh;
+            left: -10vw;
+            width: 120vmin;
+            height: 120vmin;
+            background: repeating-conic-gradient(
+                from 0deg,
+                rgba(255,0,221,0.1) 0deg 15deg,
+                transparent 15deg 30deg
+            );
+            border-radius: 50%;
+            animation: spin 60s linear infinite;
+            filter: blur(10px) drop-shadow(0 0 20px #ff00dd);
+            z-index: -2;
+        }
+
+            .spiral-svg {
+            position: fixed;
+            top: -20vh;
+            left: -20vw;
+            width: 150vmin;
+            height: 150vmin;
+            z-index: -2;
+            filter: drop-shadow(0 0 15px #ff00dd);
+            animation: spin 120s linear infinite;
+            }
+
+            @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+
+
+
+
+        .div-header {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            font-weight: normal;
+            color: #ff00dd;
+            text-align: left;
+            margin-left: 12rem;
+            margin-top: 4rem;
+            text-shadow:
+                0 0 5px #ff00dd,
+                0 0 10px #ff33ee,
+                0 0 20px #ff33ee,
+                0 0 40px #ff00dd;
+            animation: flicker 2.5s infinite alternate;
+        }
+
+        /* flicker effect */
+        @keyframes flicker {
+        0%, 18%, 22%, 25%, 53%, 57%, 100% {
+            opacity: 1;
+            text-shadow:
+            0 0 5px #ff00dd,
+            0 0 10px #ff33ee,
+            0 0 20px #ff33ee,
+            0 0 40px #ff00dd,
+            0 0 80px #ff00dd;
+        }
+        20%, 24%, 55% {
+            opacity: 0.4;
+            text-shadow: none;
+        }
+        }
+
+
+
+
+
+        p {
+
+            margin: 5%;
+            font-family: 'Courier New', cursive;
+            padding-top: 0.2rem;
+            color: #ff00DD;
+            font-size: 0.9rem;
+            text-shadow: 2px 2px 5px #ff66cc;
+
+        }
+
+        h4 {
+            margin-top: 70%;
+            padding-right: 65%;
+            color: lightgray;
+            text-align: center;
+            font-size: 0.8rem;
+                    
+        }
+
+        h5 {
+            margin: 0;
+            font-family: 'Courier New', cursive;
+            padding-top: 0.2rem;
+            font-weight: bold;
+            color: #f509ae;
+            font-size: 0.8rem;
+            text-shadow: 2px 2px 5px #ff66cc;
+            margin: 5px;
+            text-align: center;
+           
+        }
+        h6 {
+            margin: 0;
+            font-family: 'Courier New', cursive;
+            color: #e41777;
+            font-size: 0.9rem;
+            text-shadow: 2px 2px 5px #ff66cc;
+            text-align: center;
+
+            .glow{
+                color: #fff;
+                text-shadow:
+                    0 0 5px #ff00cc,
+                    0 0 10px #ff00cc,
+                    0 0 20px #ff00cc,  
+
+            }
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: lightgray;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+            font-size: 0.8rem;
+        }
+
+        a, button, .section-title, * {
+            cursor: none !important;
+        }
